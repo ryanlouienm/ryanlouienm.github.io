@@ -155,24 +155,25 @@
 
     /* Official Handle Banner */
     .handle-banner {
-      background: linear-gradient(135deg, rgba(174, 223, 242, 0.35), rgba(247, 200, 216, 0.30));
-      border: 1px solid rgba(122, 160, 196, 0.35);
+      background: linear-gradient(135deg, rgba(174, 223, 242, 0.40), rgba(247, 200, 216, 0.35));
+      border: 1px solid rgba(122, 160, 196, 0.40);
       border-radius: 14px;
-      padding: 10px 14px;
+      padding: 12px 18px;
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      font-size: 13px;
-      color: var(--royal-dark);
-      font-weight: 600;
-      line-height: 1.4;
+      text-align: center;
     }
 
-    .handle-banner strong {
+    .handle-banner .handle-text {
+      font-size: 19px;
       font-weight: 800;
       color: var(--royal-blue);
+      text-decoration: underline;
+      text-underline-offset: 5px;
+      text-decoration-thickness: 2px;
+      letter-spacing: 0.3px;
     }
 
     /* Chapter Section Card */
@@ -426,7 +427,7 @@
       <p class="bio">Dance reels, practice cuts &amp; polished covers — posted everywhere, same reel. New drops all through Chapter 2.</p>
       
       <div class="handle-banner">
-        <span><strong>@ryanlouienm</strong> — My official handle — the same one on every platform below.</span>
+        <span class="handle-text">@ryanlouienm</span>
       </div>
     </header>
 
