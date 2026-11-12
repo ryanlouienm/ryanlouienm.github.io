@@ -15,24 +15,22 @@ html_content = f'''<!DOCTYPE html>
   <meta name="description" content="K-POP DANCE COVERS · OʻAHU, HAWAIʻI — Dance reels, practice cuts & polished covers by Ryan Louie Nolasco (@ryanlouienm)">
   <link rel="icon" type="image/jpeg" href="data:image/jpeg;base64,{b64_img}">
   <link rel="apple-touch-icon" href="data:image/jpeg;base64,{b64_img}">
-  <meta name="theme-color" content="#AEDFF2">
+  <meta name="theme-color" content="#DCEEFB">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   
   <style>
     :root {{
-      --light-blue: #AEDFF2;
-      --pastel-pink: #F7C8D8;
-      --neutral-blue: #7AA0C4;
-      --royal-blue: #243FD6;
-      --royal-dark: #162E7B;
-      --white: #FFFFFF;
-      --text-main: #0D1B3E;
-      --text-muted: #5B6F86;
-      --card-bg: rgba(255, 255, 255, 0.86);
-      --card-border: rgba(255, 255, 255, 0.95);
-      --card-shadow: 0 8px 24px rgba(22, 46, 123, 0.07);
-      --card-hover-shadow: 0 14px 32px rgba(36, 63, 214, 0.14);
+      --bg-color: #dceefb;
+      --navy-dark: #0f2b5c;
+      --royal-blue: #1b45cb;
+      --royal-accent: #2550d4;
+      --text-muted: #507294;
+      --text-bio: #4a6888;
+      --btn-arrow-bg: #e2effc;
+      --card-white: #ffffff;
+      --card-shadow: 0 4px 18px rgba(15, 43, 92, 0.05);
+      --card-hover-shadow: 0 8px 24px rgba(27, 69, 203, 0.12);
     }}
 
     * {{
@@ -44,195 +42,196 @@ html_content = f'''<!DOCTYPE html>
 
     body {{
       min-height: 100vh;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: #F0F6FB;
-      background-image: 
-        radial-gradient(circle at 12% 12%, rgba(174, 223, 242, 0.85) 0%, transparent 45%),
-        radial-gradient(circle at 88% 18%, rgba(247, 200, 216, 0.70) 0%, transparent 42%),
-        radial-gradient(circle at 50% 50%, rgba(122, 160, 196, 0.35) 0%, transparent 55%),
-        radial-gradient(circle at 20% 85%, rgba(174, 223, 242, 0.60) 0%, transparent 45%),
-        radial-gradient(circle at 82% 88%, rgba(36, 63, 214, 0.18) 0%, transparent 45%);
-      background-attachment: fixed;
-      color: var(--text-main);
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 40px 18px 60px;
-      line-height: 1.5;
+      background-color: var(--bg-color);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--navy-dark);
+      position: relative;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }}
 
-    .container {{
+    /* Background Organic Waves matching Muse */
+    .bg-waves {{
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }}
+
+    .bg-svg {{
       width: 100%;
-      max-width: 480px;
+      height: 100%;
+      display: block;
+    }}
+
+    /* Main Container */
+    .container {{
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 440px;
+      margin: 0 auto;
+      padding: 32px 18px 48px 18px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 20px;
     }}
 
-    /* Header Profile Section */
-    .profile-card {{
+    /* Hero Section directly on background */
+    .hero {{
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      background: var(--card-bg);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid var(--card-border);
-      border-radius: 28px;
-      padding: 32px 24px 26px;
-      box-shadow: var(--card-shadow);
-      position: relative;
-      overflow: hidden;
+      margin-bottom: 24px;
     }}
 
-    .profile-card::before {{
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 6px;
-      background: linear-gradient(90deg, var(--light-blue), var(--pastel-pink), var(--royal-blue), var(--light-blue));
-    }}
-
-    .avatar-wrapper {{
+    /* Avatar & Sparkles */
+    .avatar-wrap {{
       position: relative;
-      width: 116px;
-      height: 116px;
-      margin-bottom: 16px;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 16px auto;
     }}
 
     .avatar-img {{
-      width: 100%;
-      height: 100%;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       object-fit: cover;
-      object-position: center top;
       display: block;
-      border: 4px solid var(--white);
-      box-shadow: 0 10px 28px rgba(36, 63, 214, 0.22);
+      border: 3.5px solid #ffffff;
+      box-shadow: 0 0 0 2.5px var(--royal-accent), 0 8px 22px rgba(27, 69, 203, 0.18);
     }}
 
-    .avatar-ring {{
+    .sparkle {{
       position: absolute;
-      inset: -4px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--light-blue), var(--royal-blue));
-      z-index: -1;
+      pointer-events: none;
+      animation: floatSparkle 4s ease-in-out infinite alternate;
     }}
 
-    h1.brand-h1 {{
-      font-size: 32px;
+    .sparkle-left {{
+      top: 14px;
+      left: -14px;
+      width: 17px;
+      height: 17px;
+    }}
+
+    .sparkle-right {{
+      top: 64px;
+      right: -16px;
+      width: 15px;
+      height: 15px;
+      animation-delay: 2s;
+    }}
+
+    @keyframes floatSparkle {{
+      0% {{ transform: translateY(0) scale(1); }}
+      50% {{ transform: translateY(-3px) scale(1.08); }}
+      100% {{ transform: translateY(2px) scale(0.95); }}
+    }}
+
+    /* Hero Typography */
+    .brand-title {{
+      font-size: 38px;
       font-weight: 900;
-      letter-spacing: 2px;
-      color: var(--royal-dark);
+      color: var(--navy-dark);
+      letter-spacing: 0.5px;
+      line-height: 1.1;
       margin-bottom: 4px;
     }}
 
-    .full-name {{
+    .name-sub {{
       font-size: 19px;
       font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 6px;
+      color: var(--royal-accent);
+      margin-bottom: 12px;
     }}
 
     .tagline {{
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 1.2px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 1.6px;
       text-transform: uppercase;
-      color: var(--royal-blue);
-      background: rgba(36, 63, 214, 0.08);
-      padding: 6px 14px;
-      border-radius: 999px;
-      display: inline-block;
       margin-bottom: 14px;
     }}
 
     .bio {{
       font-size: 14.5px;
       font-weight: 500;
-      color: var(--text-muted);
+      color: var(--text-bio);
       line-height: 1.55;
       max-width: 390px;
       margin-bottom: 18px;
     }}
 
-    /* Official Handle Banner */
-    .handle-banner {{
-      background: linear-gradient(135deg, rgba(174, 223, 242, 0.40), rgba(247, 200, 216, 0.35));
-      border: 1px solid rgba(122, 160, 196, 0.40);
-      border-radius: 14px;
-      padding: 12px 18px;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }}
-
-    .handle-banner .handle-text {{
-      font-size: 19px;
+    .bio strong {{
+      color: var(--navy-dark);
       font-weight: 800;
-      color: var(--royal-blue);
-      text-decoration: underline;
-      text-underline-offset: 5px;
-      text-decoration-thickness: 2px;
-      letter-spacing: 0.3px;
     }}
 
-    /* Chapter Section Card */
-    .chapter-card {{
-      width: 100%;
-      background: var(--card-bg);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid var(--card-border);
-      border-radius: 22px;
-      padding: 22px 20px;
-      box-shadow: var(--card-shadow);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }}
-
-    .chapter-pill-wrap {{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }}
-
+    /* Chapter 2 Pill */
     .chapter-pill {{
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      background: linear-gradient(135deg, var(--royal-blue), #1B3B8A);
-      color: var(--white);
-      font-size: 11.5px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      padding: 6px 14px;
+      gap: 8px;
+      background: var(--royal-blue);
+      color: #ffffff;
+      padding: 8px 18px;
       border-radius: 999px;
-      box-shadow: 0 4px 14px rgba(36, 63, 214, 0.28);
+      font-size: 12.5px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      box-shadow: 0 4px 14px rgba(27, 69, 203, 0.28);
+      margin-bottom: 14px;
     }}
 
-    .chapter-pill .dot {{
+    .pill-dot {{
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: #7ED6F8;
+      background: #73b8ff;
+      display: inline-block;
     }}
 
+    /* Chapter Story Text */
     .chapter-story {{
-      font-size: 13.8px;
-      color: #334E68;
-      line-height: 1.58;
+      font-size: 14px;
       font-weight: 500;
+      color: var(--text-bio);
+      line-height: 1.55;
+      max-width: 400px;
+      margin: 0 auto 20px auto;
+    }}
+
+    .chapter-story strong {{
+      color: var(--navy-dark);
+      font-weight: 700;
+    }}
+
+    /* Handle: ONLY @ryanlouienm, underlined in blue, no bubble */
+    .handle-wrap {{
       text-align: center;
+      margin: 4px 0 6px 0;
+    }}
+
+    .handle-link {{
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--navy-dark);
+      text-decoration: underline;
+      text-decoration-color: var(--royal-accent);
+      text-decoration-thickness: 3px;
+      text-underline-offset: 6px;
+      letter-spacing: 0.3px;
+      display: inline-block;
     }}
 
     /* Links Stack */
@@ -241,310 +240,408 @@ html_content = f'''<!DOCTYPE html>
       display: flex;
       flex-direction: column;
       gap: 12px;
+      margin-bottom: 20px;
     }}
 
     .link-card {{
+      background: var(--card-white);
+      border-radius: 20px;
+      padding: 14px 18px;
+      box-shadow: var(--card-shadow);
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 14px;
-      width: 100%;
-      padding: 14px 18px;
-      background: var(--card-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--card-border);
-      border-radius: 18px;
-      box-shadow: var(--card-shadow);
       text-decoration: none;
-      color: var(--text-main);
-      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
     }}
 
-    .link-card:hover, .link-card:focus-visible {{
+    .link-card:hover {{
       transform: translateY(-2px);
       box-shadow: var(--card-hover-shadow);
-      border-color: #BEE3F8;
-      background: rgba(255, 255, 255, 0.96);
-      outline: none;
     }}
 
     .link-card:active {{
       transform: scale(0.985);
     }}
 
-    .icon-box {{
-      width: 44px;
-      height: 44px;
-      border-radius: 13px;
+    .card-left {{
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+      flex: 1;
+    }}
+
+    .card-icon-wrap {{
+      width: 46px;
+      height: 46px;
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-      overflow: hidden;
     }}
 
-    .icon-box svg {{
-      width: 23px;
-      height: 23px;
-    }}
-
-    /* Platform icon stylings */
+    /* Icon Variations */
     .icon-ig {{
-      background: linear-gradient(135deg, #F58529, #DD2A7B, #8134AF);
-      color: #FFFFFF;
+      border-radius: 13px;
+      background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+      box-shadow: 0 3px 10px rgba(214, 36, 159, 0.25);
     }}
 
     .icon-fb {{
-      background: #1877F2;
-      color: #FFFFFF;
+      border-radius: 50%;
+      background: #e2effc;
     }}
 
-    .icon-tt {{
+    .icon-tiktok {{
+      border-radius: 50%;
       background: #000000;
-      color: #FFFFFF;
     }}
 
     .icon-yt {{
-      background: #FF0000;
-      color: #FFFFFF;
+      border-radius: 50%;
+      background: #feebeb;
     }}
 
     .icon-xhs {{
-      background: #FF2442;
-      padding: 0;
+      border-radius: 13px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(255, 36, 66, 0.25);
     }}
 
-    .icon-xhs img {{
+    .icon-xhs-img {{
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      border-radius: 13px;
     }}
 
-    .link-info {{
-      flex: 1;
+    .card-text {{
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      gap: 3px;
       min-width: 0;
+      text-align: left;
     }}
 
-    .link-label {{
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--text-main);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }}
-
-    .link-subtitle {{
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text-muted);
+    .card-title {{
+      font-size: 16.5px;
+      font-weight: 800;
+      color: var(--navy-dark);
+      line-height: 1.25;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }}
 
-    .link-arrow {{
-      width: 20px;
-      height: 20px;
-      color: #94A3B8;
+    .card-sub {{
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      line-height: 1.3;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }}
+
+    /* Arrow Button on the right */
+    .card-action {{
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--btn-arrow-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       flex-shrink: 0;
-      transition: transform 0.2s ease, color 0.2s ease;
+      transition: background-color 0.15s ease, transform 0.15s ease;
     }}
 
-    .link-card:hover .link-arrow {{
-      transform: translateX(3px);
-      color: var(--royal-blue);
+    .link-card:hover .card-action {{
+      background: #d4e7fb;
+      transform: translateX(2px) translateY(-2px);
     }}
 
-    /* About Section */
+    /* About Ryan Card */
     .about-card {{
       width: 100%;
-      background: var(--card-bg);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 20px 22px;
+      background: var(--card-white);
+      border-radius: 22px;
+      padding: 24px 22px;
       box-shadow: var(--card-shadow);
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
+      text-align: center;
+      margin-bottom: 28px;
     }}
 
-    .about-title {{
-      font-size: 13px;
+    .about-header {{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 13.5px;
       font-weight: 800;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+      letter-spacing: 1.6px;
       color: var(--royal-blue);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }}
+
+    .about-star {{
+      font-size: 14px;
+      color: var(--royal-accent);
+    }}
+
+    .about-desc {{
+      font-size: 14.5px;
+      font-weight: 500;
+      color: var(--text-bio);
+      line-height: 1.6;
       text-align: center;
     }}
 
-    .about-body {{
-      font-size: 13.8px;
-      font-weight: 500;
-      color: #334E68;
-      line-height: 1.58;
+    .about-desc strong {{
+      color: var(--navy-dark);
+      font-weight: 800;
     }}
 
     /* Footer */
-    footer.page-footer {{
-      width: 100%;
+    .footer-section {{
       text-align: center;
-      padding: 12px 16px 20px;
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      align-items: center;
+      gap: 6px;
     }}
 
-    .footer-line-1 {{
+    .footer-title {{
+      font-size: 17.5px;
+      font-weight: 800;
+      color: var(--navy-dark);
+    }}
+
+    .footer-sub {{
       font-size: 13.5px;
-      font-weight: 700;
-      color: var(--royal-dark);
-    }}
-
-    .footer-line-2 {{
-      font-size: 12.5px;
       font-weight: 500;
       color: var(--text-muted);
+    }}
+
+    @media (max-width: 380px) {{
+      .container {{
+        padding: 24px 14px 40px 14px;
+      }}
+      .brand-title {{
+        font-size: 34px;
+      }}
+      .link-card {{
+        padding: 12px 14px;
+      }}
+      .card-title {{
+        font-size: 15.5px;
+      }}
     }}
   </style>
 </head>
 <body>
 
+  <!-- Background organic wavy canvas -->
+  <div class="bg-waves" aria-hidden="true">
+    <svg class="bg-svg" viewBox="0 0 500 1200" preserveAspectRatio="xMidYMin slice">
+      <!-- Top wave behind avatar & right of hero -->
+      <path d="M 110 -20 C 240 30, 360 80, 420 180 C 470 270, 520 380, 520 480 C 420 500, 320 460, 260 410 C 200 350, 220 250, 270 210 C 310 170, 290 90, 190 60 C 150 48, 120 15, 110 -20 L 520 -20 L 520 480 Z" fill="#ffffff"/>
+      <!-- Mid wave behind Facebook & TikTok -->
+      <path d="M -20 540 C 90 530, 210 580, 230 680 C 250 780, 150 860, -20 880 Z" fill="#ffffff"/>
+      <!-- Bottom wave behind About card and footer -->
+      <path d="M 520 860 C 410 870, 300 930, 280 1030 C 260 1130, 360 1210, 520 1220 Z" fill="#ffffff"/>
+    </svg>
+  </div>
+
   <main class="container">
     
-    <!-- Profile & Brand Hero Card -->
-    <header class="profile-card">
-      <div class="avatar-wrapper">
-        <div class="avatar-ring"></div>
+    <!-- Hero Section (direct on background) -->
+    <header class="hero">
+      
+      <div class="avatar-wrap">
+        <!-- Sparkle Top-Left (Light Sky Blue) -->
+        <svg class="sparkle sparkle-left" viewBox="0 0 24 24" fill="#62b5ec" aria-hidden="true">
+          <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z"/>
+        </svg>
+        
         <img src="data:image/jpeg;base64,{b64_img}" alt="Ryan Louie Nolasco" class="avatar-img">
+        
+        <!-- Sparkle Mid-Right (Royal Dark Blue) -->
+        <svg class="sparkle sparkle-right" viewBox="0 0 24 24" fill="#1b45cb" aria-hidden="true">
+          <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z"/>
+        </svg>
       </div>
-      
-      <h1 class="brand-h1">RYAN</h1>
-      <div class="full-name">Ryan Louie Nolasco</div>
-      <div class="tagline">K-POP DANCE COVERS · OʻAHU, HAWAIʻI</div>
-      
-      <p class="bio">Dance reels, practice cuts &amp; polished covers — posted everywhere, same reel. New drops all through Chapter 2.</p>
-      
-      <div class="handle-banner">
-        <span class="handle-text">@ryanlouienm</span>
-      </div>
-    </header>
 
-    <!-- Chapter 2 Story Card -->
-    <section class="chapter-card" aria-label="Chapter 2">
-      <div class="chapter-pill-wrap">
-        <div class="chapter-pill">
-          <span class="dot"></span>
-          <span>CHAPTER 2: PAINT THE WORLD</span>
-        </div>
+      <h1 class="brand-title">RYAN</h1>
+      <div class="name-sub">Ryan Louie Nolasco</div>
+      <div class="tagline">K-POP DANCE COVERS &nbsp;·&nbsp; OʻAHU, HAWAIʻI</div>
+
+      <p class="bio">Dance reels, practice cuts &amp; polished covers — <strong>posted everywhere, same reel.</strong> New drops all through Chapter 2.</p>
+
+      <div class="chapter-pill">
+        <span class="pill-dot"></span>
+        <span>CHAPTER 2: PAINT THE WORLD</span>
       </div>
-      <p class="chapter-story">Chapter 1: Awakening The Ace came first. Now Chapter 2: Paint The World is about being fully yourself, no matter what. Hate is inevitable and will come regardless — but to put yourself out there, you must paint the world!</p>
-    </section>
+
+      <p class="chapter-story"><strong>Chapter 1: Awakening The Ace</strong> came first. Now <strong>Chapter 2: Paint The World</strong> is about being fully yourself, no matter what. Hate is inevitable and will come regardless — but to put yourself out there, you must paint the world!</p>
+
+      <div class="handle-wrap">
+        <span class="handle-link">@ryanlouienm</span>
+      </div>
+
+    </header>
 
     <!-- Links Stack -->
     <nav class="links-stack" aria-label="Official Links">
 
       <!-- 1. Instagram -->
-      <a href="https://www.instagram.com/ryanlouienm?xtok=Y25yaHUyZ3BseW43&amp;utm_source=qr" class="link-card" target="_blank" rel="noopener noreferrer">
-        <div class="icon-box icon-ig">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+      <a href="https://www.instagram.com/ryanlouienm?xtok=Y25yaHUyZ3BseW43&amp;utm_source=qr" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="link-card" 
+         aria-label="Instagram: Reels, stories &amp; updates">
+        <div class="card-left">
+          <div class="card-icon-wrap icon-ig">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </div>
+          <div class="card-text">
+            <span class="card-title">Instagram</span>
+            <span class="card-sub">Reels, stories &amp; updates</span>
+          </div>
+        </div>
+        <div class="card-action" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1b45cb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
           </svg>
         </div>
-        <div class="link-info">
-          <span class="link-label">Instagram</span>
-          <span class="link-subtitle">Reels, stories &amp; updates</span>
-        </div>
-        <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="9 18 15 12 9 6"></polyline>
-        </svg>
       </a>
 
       <!-- 2. Facebook -->
-      <a href="https://www.facebook.com/share/1JpFRVHH4j/?mibextid=wwXIfr" class="link-card" target="_blank" rel="noopener noreferrer">
-        <div class="icon-box icon-fb">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+      <a href="https://www.facebook.com/share/1JpFRVHH4j/?mibextid=wwXIfr" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="link-card" 
+         aria-label="Facebook: Reels, updates &amp; community posts">
+        <div class="card-left">
+          <div class="card-icon-wrap icon-fb">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#1877f2">
+              <path d="M14 13.5h2.5l1-4H14v-2c0-1.03.3-1.75 1.75-1.75H17.5V2.2c-.37-.05-1.5-.15-2.85-.15-2.82 0-4.65 1.72-4.65 4.77v2.68H6.5v4H10v10.5h4V13.5z"/>
+            </svg>
+          </div>
+          <div class="card-text">
+            <span class="card-title">Facebook</span>
+            <span class="card-sub">Reels, updates &amp; community posts</span>
+          </div>
+        </div>
+        <div class="card-action" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1b45cb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
           </svg>
         </div>
-        <div class="link-info">
-          <span class="link-label">Facebook</span>
-          <span class="link-subtitle">Reels, updates &amp; community posts</span>
-        </div>
-        <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="9 18 15 12 9 6"></polyline>
-        </svg>
       </a>
 
       <!-- 3. TikTok -->
-      <a href="https://www.tiktok.com/@ryanlouienm?_r=1&amp;_t=ZT-9AxGZhjOUbm" class="link-card" target="_blank" rel="noopener noreferrer">
-        <div class="icon-box icon-tt">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.29 0 .58.04.86.11V9.38a6.34 6.34 0 0 0-.86-.06A6.34 6.34 0 0 0 3.1 15.66a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V9.05a8.31 8.31 0 0 0 4.81 1.53v-3.5a4.84 4.84 0 0 1-1-.39z"/>
+      <a href="https://www.tiktok.com/@ryanlouienm?_r=1&amp;_t=ZT-9AxGZhjOUbm" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="link-card" 
+         aria-label="TikTok: Daily dance TikToks">
+        <div class="card-left">
+          <div class="card-icon-wrap icon-tiktok">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="#ffffff">
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.298 0 .586.046.86.13V9.42a6.34 6.34 0 0 0-.86-.06 6.34 6.34 0 1 0 6.34 6.34V8.58a8.28 8.28 0 0 0 4.77 1.52v-3.41z"/>
+            </svg>
+          </div>
+          <div class="card-text">
+            <span class="card-title">TikTok</span>
+            <span class="card-sub">Daily dance TikToks</span>
+          </div>
+        </div>
+        <div class="card-action" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1b45cb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
           </svg>
         </div>
-        <div class="link-info">
-          <span class="link-label">TikTok</span>
-          <span class="link-subtitle">Daily dance TikToks</span>
-        </div>
-        <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="9 18 15 12 9 6"></polyline>
-        </svg>
       </a>
 
       <!-- 4. YouTube -->
-      <a href="https://youtube.com/@ryanlouienm?si=k9ac4z_xhN1ph43_" class="link-card" target="_blank" rel="noopener noreferrer">
-        <div class="icon-box icon-yt">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+      <a href="https://youtube.com/@ryanlouienm?si=k9ac4z_xhN1ph43_" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="link-card" 
+         aria-label="YouTube: Shorts &amp; covers">
+        <div class="card-left">
+          <div class="card-icon-wrap icon-yt">
+            <svg width="25" height="18" viewBox="0 0 24 17" fill="none">
+              <path d="M23.498 2.628a2.998 2.998 0 0 0-2.11-2.12C19.52 0 12 0 12 0S4.48 0 2.612.508a2.998 2.998 0 0 0-2.11 2.12C0 4.506 0 8.5 0 8.5s0 3.994.502 5.872a2.998 2.998 0 0 0 2.11 2.12C4.48 17 12 17 12 17s7.52 0 9.388-.508a2.998 2.998 0 0 0 2.11-2.12C24 12.494 24 8.5 24 8.5s0-3.994-.502-5.872z" fill="#FF0000"/>
+              <polygon points="9.6 12.1 15.84 8.5 9.6 4.9" fill="#FFFFFF"/>
+            </svg>
+          </div>
+          <div class="card-text">
+            <span class="card-title">YouTube</span>
+            <span class="card-sub">Shorts &amp; covers</span>
+          </div>
+        </div>
+        <div class="card-action" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1b45cb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
           </svg>
         </div>
-        <div class="link-info">
-          <span class="link-label">YouTube</span>
-          <span class="link-subtitle">Shorts &amp; covers</span>
-        </div>
-        <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="9 18 15 12 9 6"></polyline>
-        </svg>
       </a>
 
       <!-- 5. rednote 小红书 -->
-      <a href="https://xhslink.cn/m/A94wY75Vcx1" class="link-card" target="_blank" rel="noopener noreferrer">
-        <div class="icon-box icon-xhs">
-          <img src="data:image/png;base64,{b64_xhs}" alt="rednote 小红书">
+      <a href="https://xhslink.cn/m/A94wY75Vcx1" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="link-card" 
+         aria-label="rednote 小红书: Notes &amp; dance covers">
+        <div class="card-left">
+          <div class="card-icon-wrap icon-xhs">
+            <img src="data:image/png;base64,{b64_xhs}" alt="rednote" class="icon-xhs-img">
+          </div>
+          <div class="card-text">
+            <span class="card-title">rednote 小红书</span>
+            <span class="card-sub">Notes &amp; dance covers</span>
+          </div>
         </div>
-        <div class="link-info">
-          <span class="link-label">rednote 小红书</span>
-          <span class="link-subtitle">Notes &amp; dance covers</span>
+        <div class="card-action" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1b45cb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
         </div>
-        <svg class="link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="9 18 15 12 9 6"></polyline>
-        </svg>
       </a>
 
     </nav>
 
     <!-- About Ryan Card -->
     <section class="about-card" aria-label="About Ryan">
-      <div class="about-title">About Ryan</div>
-      <p class="about-body">Ryan is a boy dancer from Oʻahu who specializes in K-pop dance and performance — sharp, high-energy covers posted as simple reels, one track at a time.</p>
+      <div class="about-header">
+        <span class="about-star">✦</span>
+        <span>ABOUT RYAN</span>
+        <span class="about-star">✦</span>
+      </div>
+      <p class="about-desc">
+        Ryan is a <strong>boy dancer</strong> from Oʻahu who specializes in <strong>K-pop dance and performance</strong> — sharp, high-energy covers posted as simple reels, one track at a time.
+      </p>
     </section>
 
     <!-- Footer -->
-    <footer class="page-footer">
-      <div class="footer-line-1">Check out Ryan's content!</div>
-      <div class="footer-line-2">Tap a link above to watch on your favorite platform.</div>
+    <footer class="footer-section">
+      <h2 class="footer-title">Check out Ryan's content!</h2>
+      <p class="footer-sub">Tap a link above to watch on your favorite platform.</p>
     </footer>
 
   </main>
@@ -556,4 +653,4 @@ html_content = f'''<!DOCTYPE html>
 with open('/Users/ryanlouienolasco/.gemini/antigravity/scratch/ryan-links/index.html', 'w', encoding='utf-8') as f:
     f.write(html_content)
 
-print("Updated /Users/ryanlouienolasco/.gemini/antigravity/scratch/ryan-links/index.html successfully!")
+print("Generated index.html successfully!")
